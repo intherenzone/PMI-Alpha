@@ -146,32 +146,40 @@ class ContractListFormHelper(FormHelper):
                     '<i class="fa fa-search"></i> Search Contract Records',       
                     'IssuingCompany',
                     'ContractNumber',
-
+                    'DocumentLocation',
+                    'OrganizationType',
+                    'CustomerID'
+                    'POC',
+                    'EffectiveDate',
+                    'EndDate',
+                    'StartDate',
+                    'Status',
+                    'Comments',
                 ),
               Submit('submit', 'Apply Filter'),
     )
 
-class PartnerListFormHelper(FormHelper):    
+class PartnerListFormHelper(FormHelper):
     form_method = 'GET'
     FormHelper.form_class = 'form-horizontal'
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Partner Records',       
+                    '<i class="fa fa-search"></i> Search Partner Records',
                     'LegalName',
                 ),
               Submit('submit', 'Apply Filter'),
     )
 
-class DepartmentListFormHelper(FormHelper):    
+class DepartmentListFormHelper(FormHelper):
     form_method = 'GET'
     FormHelper.form_class = 'form-horizontal'
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Department Records',       
+                    '<i class="fa fa-search"></i> Search Department Records',
                     'ContractID',
                     'CustomerID',
                     'Name',
@@ -181,19 +189,22 @@ class DepartmentListFormHelper(FormHelper):
               Submit('submit', 'Apply Filter'),
     )
 
-class POCListFormHelper(FormHelper):    
+class POCListFormHelper(FormHelper):
     form_method = 'GET'
     FormHelper.form_class = 'form-horizontal'
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Point of Contact Records',       
+                    '<i class="fa fa-search"></i> Search Point of Contact Records',
                     InlineField('FName'),
                     InlineField('LName'),
                     'PartnerID',
                     'ContractID',
                     'CustomerID',
+                    'Address',
+                    'Phone',
+                    'Email',
 
                 ),
               Submit('submit', 'Apply Filter'),
