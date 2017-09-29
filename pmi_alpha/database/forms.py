@@ -146,7 +146,15 @@ class ContractListFormHelper(FormHelper):
                     '<i class="fa fa-search"></i> Search Contract Records',       
                     'IssuingCompany',
                     'ContractNumber',
-
+                    'DocumentLocation',
+                    'OrganizationType',
+                    'CustomerID'
+                    'POC',
+                    'EffectiveDate',
+                    'EndDate',
+                    'StartDate',
+                    'Status',
+                    'Comments',
                 ),
               Submit('submit', 'Apply Filter'),
     )
@@ -194,6 +202,9 @@ class POCListFormHelper(FormHelper):
                     'PartnerID',
                     'ContractID',
                     'CustomerID',
+                    'Address',
+                    'Phone',
+                    'Email',
 
                 ),
               Submit('submit', 'Apply Filter'),
