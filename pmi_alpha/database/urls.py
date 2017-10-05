@@ -54,6 +54,12 @@ urlpatterns = [
     url(r'^departments/$', views.DepartmentListView.as_view(), name="department table"),
     url(r'^POCs/$', views.POCListView.as_view(), name="poc table"),
 
-
-
+   #AutoComplete for Contract
+    url(r'^Contracts/getIC/$', views.getIC, name='get_IC'),
+    url(r'^Contracts/getCN/$', views.getCN, name='get_CN'),
+    url(r'^Contracts/getDL/$', views.getDL, name='get_DL'),
+    url(r'^Contracts/getOT/$', views.getOT, name='get_OT'),
+    url(r'^Contracts/getPOC/$', views.getPOC, name='get_POC'),
+    url(r'^Contracts/getS/$', views.getS, name='get_S'),
+    url(r'^Contracts/getC/$', views.getC, name='get_C'),
 ]

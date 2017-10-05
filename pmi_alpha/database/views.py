@@ -6,12 +6,129 @@ from .tables import *
 from .filters import *
 from django.views import generic
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+import json
+
+
+#Contract model
+def getIC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    IC = Contract.objects.order_by('IssuingCompany').filter(IssuingCompany__istartswith=q)
+    results = []
+    for ic in IC:
+        IC_json = {}
+        IC_json['value'] = ic.IssuingCompany
+        if IC_json not in results:
+            results.append(IC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getCN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    CN = Contract.objects.order_by('ContractNumber').filter(ContractNumber__istartswith=q)
+    results = []
+    for cn in CN:
+        CN_json = {}
+        CN_json['value'] = cn.ContractNumber
+        if CN_json not in results:
+            results.append(CN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getDL(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    DL = Contract.objects.order_by('DocumentLocation').filter(DocumentLocation__istartswith=q)
+    results = []
+    for dl in DL:
+        DL_json = {}
+        DL_json['value'] = dl.DocumentLocation
+        if DL_json not in results:
+            results.append(DL_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getOT(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    OT = Contract.objects.order_by('OrganizationType').filter(OrganizationType__istartswith=q)
+    results = []
+    for ot in OT:
+        OT_json = {}
+        OT_json['value'] = ot.OrganizationType
+        if OT_json not in results:
+            results.append(OT_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getPOC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    POC = Contract.objects.order_by('POC').filter(POC__istartswith=q)
+    results = []
+    for poc in POC:
+        POC_json = {}
+        POC_json['value'] = poc.POC
+        if POC_json not in results:
+            results.append(POC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getS(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    S = Contract.objects.order_by('Status').filter(Status__istartswith=q)
+    results = []
+    for s in S:
+        S_json = {}
+        S_json['value'] = s.Status
+        if S_json not in results:
+            results.append(S_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    C = Contract.objects.order_by('Comments').filter(Comments__istartswith=q)
+    results = []
+    for c in C:
+        C_json = {}
+        C_json['value'] = c.Comments
+        if C_json not in results:
+            results.append(C_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
 
 #Detail Views -> Shows detailed Object Info from table.
 class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):
@@ -327,6 +444,7 @@ class CustomerListView(PermissionRequiredMixin,TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
+
 class ContractListView(PermissionRequiredMixin,TemplateView):
     permission_required = 'database.Contract'
     template_name = 'database/searchable.html'
@@ -344,12 +462,15 @@ class ContractListView(PermissionRequiredMixin,TemplateView):
         context['table'] = table
         return context
 
+
+
 class PartnerListView(PermissionRequiredMixin,TemplateView):
     permission_required = 'database.Partner'
     template_name = 'database/searchable.html'
 
     def get_queryset(self, **kwargs):
         return Partner.objects.all()
+
 
     def get_context_data(self, **kwargs):
         context = super(PartnerListView, self).get_context_data(**kwargs)
@@ -394,3 +515,5 @@ class POCListView(PermissionRequiredMixin,TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
+
+

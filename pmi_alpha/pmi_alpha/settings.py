@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'database',
     'images',
     'watson',               #Basic Search
+
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE = [
