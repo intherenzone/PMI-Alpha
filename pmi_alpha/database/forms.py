@@ -115,12 +115,42 @@ class GGListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Google Group Records',       
-                    'Name',
-                    'Admin'
-                ),
-              Submit('submit', 'Apply Filter'),
+        Fieldset('<i class="fa fa-search"></i> Search Google Group Records'),
+
+        HTML("""
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+            <div class="ui-widget">
+                {{filter.form.as_p}}
+                <button type="submit">Apply Filter</button>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                   $("#id_Name").autocomplete({
+                        source: "getN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                });
+                    $("#id_Admin").autocomplete({
+                        source: "getAD/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                function AutoCompleteSelectHandler(event, ui)
+                {
+                    var selectedObj = ui.item;
+                }
+            </script>
+        """),
+                    #'Name',
+                    #'Admin'
+                    #Submit('submit', 'Apply Filter'),
     )
 
 class CustomerListFormHelper(FormHelper):    
@@ -142,21 +172,86 @@ class ContractListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Contract Records',       
-                    'IssuingCompany',
-                    'ContractNumber',
-                    'DocumentLocation',
-                    'OrganizationType',
-                    'CustomerID'
-                    'POC',
-                    'EffectiveDate',
-                    'EndDate',
-                    'StartDate',
-                    'Status',
-                    'Comments',
-                ),
-              Submit('submit', 'Apply Filter'),
+
+        Fieldset('<i class="fa fa-search"></i> Search Contract Records'),
+
+        HTML("""
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+            <div class="ui-widget">
+                {{filter.form.as_p}}
+                <p> Notice: When you input Date, please follow the format "dd/mm/yyyy". </p>
+                <button type="submit">Apply Filter</button>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                   $("#id_IssuingCompany").autocomplete({
+                        source: "getIC/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_ContractNumber").autocomplete({
+                        source: "getCN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_DocumentLocation").autocomplete({
+                        source: "getDL/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_OrganizationType").autocomplete({
+                        source: "getOT/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_POC").autocomplete({
+                        source: "getPOC/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Status").autocomplete({
+                        source: "getS/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Comments").autocomplete({
+                        source: "getC/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                });
+                function AutoCompleteSelectHandler(event, ui)
+                {
+                    var selectedObj = ui.item;
+                }
+            </script>
+        """),
+        # 'IssuingCompany',
+        # 'ContractNumber',
+        # 'DocumentLocation',
+        # 'OrganizationType',
+        # 'EffectiveDate',
+        # 'EndDate',
+        # 'StartDate',
+        # 'Status',
+        # 'Comments',
+        #Submit('submit', 'Apply Filter'),
     )
 
 class PartnerListFormHelper(FormHelper):    
@@ -195,17 +290,70 @@ class POCListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Point of Contact Records',       
-                    InlineField('FName'),
-                    InlineField('LName'),
-                    'PartnerID',
-                    'ContractID',
-                    'CustomerID',
-                    'Address',
-                    'Phone',
-                    'Email',
 
-                ),
-              Submit('submit', 'Apply Filter'),
+        Fieldset('<i class="fa fa-search"></i> Search POC Records'),
+
+        HTML("""
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <div class="ui-widget">
+            {{filter.form.as_p}}
+            <button type="submit">Apply Filter</button>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+               $("#id_FName").autocomplete({
+                    source: "getFN/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+               $("#id_LName").autocomplete({
+                    source: "getLN/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+               $("#id_Address").autocomplete({
+                    source: "getA/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+                $("#id_Phone").autocomplete({
+                    source: "getP/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+                $("#id_Email").autocomplete({
+                    source: "getE/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+            });
+            function AutoCompleteSelectHandler(event, ui)
+            {
+                var selectedObj = ui.item;
+            }
+        </script>
+    """),
+                    #InlineField('FName'),
+                    #InlineField('LName'),
+                    #'PartnerID',
+                    #'ContractID',
+                    #'CustomerID',
+                    #'Address',
+                    #'Phone',
+                    #'Email',
+
+
+              #Submit('submit', 'Apply Filter'),
     )

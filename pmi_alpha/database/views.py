@@ -6,12 +6,241 @@ from .tables import *
 from .filters import *
 from django.views import generic
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+import json
+
+#Contract model
+def getIC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    IC = Contract.objects.order_by('IssuingCompany').filter(IssuingCompany__istartswith=q)
+    results = []
+    for ic in IC:
+        IC_json = {}
+        IC_json['value'] = ic.IssuingCompany
+        if IC_json not in results:
+            results.append(IC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getCN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    CN = Contract.objects.order_by('ContractNumber').filter(ContractNumber__istartswith=q)
+    results = []
+    for cn in CN:
+        CN_json = {}
+        CN_json['value'] = cn.ContractNumber
+        if CN_json not in results:
+            results.append(CN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getDL(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    DL = Contract.objects.order_by('DocumentLocation').filter(DocumentLocation__istartswith=q)
+    results = []
+    for dl in DL:
+        DL_json = {}
+        DL_json['value'] = dl.DocumentLocation
+        if DL_json not in results:
+            results.append(DL_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getOT(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    OT = Contract.objects.order_by('OrganizationType').filter(OrganizationType__istartswith=q)
+    results = []
+    for ot in OT:
+        OT_json = {}
+        OT_json['value'] = ot.OrganizationType
+        if OT_json not in results:
+            results.append(OT_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getPOC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    POC = Contract.objects.order_by('POC').filter(POC__istartswith=q)
+    results = []
+    for poc in POC:
+        POC_json = {}
+        POC_json['value'] = poc.POC
+        if POC_json not in results:
+            results.append(POC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getS(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    S = Contract.objects.order_by('Status').filter(Status__istartswith=q)
+    results = []
+    for s in S:
+        S_json = {}
+        S_json['value'] = s.Status
+        if S_json not in results:
+            results.append(S_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    C = Contract.objects.order_by('Comments').filter(Comments__istartswith=q)
+    results = []
+    for c in C:
+        C_json = {}
+        C_json['value'] = c.Comments
+        if C_json not in results:
+            results.append(C_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+#POC model
+def getFN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    FN = POC.objects.order_by('FName').filter(FName__istartswith=q)
+    results = []
+    for fn in FN:
+        FN_json = {}
+        FN_json['value'] = fn.FName
+        if FN_json not in results:
+            results.append(FN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getLN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    LN = POC.objects.order_by('LName').filter(LName__istartswith=q)
+    results = []
+    for ln in LN:
+        LN_json = {}
+        LN_json['value'] = ln.LName
+        if LN_json not in results:
+            results.append(LN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getA(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    A = POC.objects.order_by('Address').filter(Address__istartswith=q)
+    results = []
+    for a in A:
+        A_json = {}
+        A_json['value'] = a.Address
+        if A_json not in results:
+            results.append(A_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getP(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    P = POC.objects.order_by('Phone').filter(Phone__istartswith=q)
+    results = []
+    for p in P:
+        P_json = {}
+        P_json['value'] = p.Phone
+        if P_json not in results:
+            results.append(P_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getE(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    E = POC.objects.order_by('Email').filter(Email__istartswith=q)
+    results = []
+    for e in E:
+        E_json = {}
+        E_json['value'] = e.Email
+        if E_json not in results:
+            results.append(E_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+#GG model
+def getN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    N = GoogleGroup.objects.order_by('Name').filter(Name__istartswith=q)
+    results = []
+    for n in N:
+        N_json = {}
+        N_json['value'] = n.Name
+        if N_json not in results:
+            results.append(N_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getAD(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    AD = GoogleGroup.objects.order_by('Admin').filter(Admin__istartswith=q)
+    results = []
+    for ad in AD:
+        AD_json = {}
+        AD_json['value'] = ad.Admin
+        if AD_json not in results:
+            results.append(AD_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
 
 #Detail Views -> Shows detailed Object Info from table.
 class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):
