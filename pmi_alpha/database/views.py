@@ -129,6 +129,246 @@ def getC(request):
   mimetype = 'application/json'
   return HttpResponse(data, mimetype)
 
+#Partner model
+def getLN(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        LN = Partner.objects.order_by('LegalName').filter(LegalName_istartswith=q)
+        results = []
+        for ln in LN:
+            LN_json = {}
+            LN_json['value']=ln.LegalName
+            if LN_json not in results:
+                results.append(LN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPA(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PA = Partner.objects.order_by('Address').filter(Address_istartswith=q)
+        results = []
+        for pa in PA:
+            PA_json = {}
+            PA_json['value']=pa.PA
+            if PA_json not in results:
+                results.append(PA_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCAGE(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        CAGE = Partner.objects.order_by('CAGE').filter(CAGE_istartswith=q)
+        results = []
+        for cage in CAGE:
+            CAGE_json = {}
+            CAGE_json['value']=cage.CAGE
+            if CAGE_json not in results:
+                results.append(CAGE_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPC(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PC = Partner.objects.order_by('City').filter(City_istartswith=q)
+        results = []
+        for pc in PC:
+            PC_json = {}
+            PC_json['value']=pc.City
+            if PC_json not in results:
+                results.append(PC_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPZ(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PZ = Partner.objects.order_by('ZipCode').filter(ZipCode_istartswith=q)
+        results = []
+        for pz in PZ:
+            PZ_json = {}
+            PZ_json['value']=pz.ZipCode
+            if PZ_json not in results:
+                results.append(PZ_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPS(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PS = Partner.objects.order_by('State').filter(State_istartswith=q)
+        results = []
+        for ps in PS:
+            PS_json = {}
+            PS_json['value']=ps.State
+            if PS_json not in results:
+                results.append(PS_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPCOUNTRY(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PCOUNTRY = Partner.objects.order_by('Country').filter(Country_istartswith=q)
+        results = []
+        for pcountry in PCOUNTRY:
+            PCOUNTRY_json = {}
+            PCOUNTRY_json['value']=pcountry.Country
+            if PCOUNTRY_json not in results:
+                results.append(PCOUNTRY_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPP(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PP = Partner.objects.order_by('Phone').filter(Phone_istartswith=q)
+        results = []
+        for pp in PP:
+            PP_json = {}
+            PP_json['value']=pp.Phone
+            if PP_json not in results:
+                results.append(PP_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPF(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PF = Partner.objects.order_by('Fax').filter(Fax_istartswith=q)
+        results = []
+        for pf in PF:
+            PF_json = {}
+            PF_json['value']=pf.Fax
+            if PF_json not in results:
+                results.append(PF_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPE(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PE = Partner.objects.order_by('Email').filter(Email_istartswith=q)
+        results = []
+        for pe in PE:
+            PE_json = {}
+            PE_json['value']=pe.Email
+            if PE_json not in results:
+                results.append(PE_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getDBA(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        DBA = Partner.objects.order_by('DBA').filter(DBA_istartswith=q)
+        results = []
+        for dba in DBA:
+            DBA_json = {}
+            DBA_json['value']=dba.DBA
+            if DBA_json not in results:
+                results.append(DBA_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getDUN(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        DUN = Partner.objects.order_by('DUNs').filter(DUNs_istartswith=q)
+        results = []
+        for dun in DUN:
+            DUN_json = {}
+            DUN_json['value']=dun.DUNs
+            if DUN_json not in results:
+                results.append(DUN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getPPOC(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        PPOC = Partner.objects.order_by('POC').filter(POC_istartswith=q)
+        results = []
+        for ppoc in PPOC:
+            PPOC_json = {}
+            PPOC_json['value']=ppoc.POC
+            if PPOC_json not in results:
+                results.append(PPOC_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getTIN(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        TIN = Partner.objects.order_by('TIN').filter(TIN_istartswith=q)
+        results = []
+        for tin in TIN:
+            TIN_json = {}
+            TIN_json['value']=tin.TIN
+            if TIN_json not in results:
+                results.append(TIN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getTYPE(request):
+    if request.is_ajax():
+        q = request.GET.get('tern','')
+        TYPE = Partner.objects.order_by('Type').filter(Type_istartswith=q)
+        results = []
+        for type in TYPE:
+            TYPE_json = {}
+            TYPE_json['value']=type.Type
+            if TYPE_json not in results:
+                results.append(TYPE_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
 
 #Detail Views -> Shows detailed Object Info from table.
 class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):

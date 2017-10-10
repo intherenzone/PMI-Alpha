@@ -62,5 +62,22 @@ urlpatterns = [
     url(r'^Contracts/getPOC/$', views.getPOC, name='get_POC'),
     url(r'^Contracts/getS/$', views.getS, name='get_S'),
     url(r'^Contracts/getC/$', views.getC, name='get_C'),
+               
+    #AutoComplete for Partner
+    url(r'^Partner/getLN/$', views.getLN, name='get_LN'),
+    url(r'^Partner/getPA/$', views.getPA, name='get_PA'),
+    url(r'^Partner/getCAGE/$', views.getCAGE, name='get_CAGE'),
+    url(r'^Partner/getPC/$', views.getPC, name='get_PC'),
+    url(r'^Partner/getPZ/$', views.getPZ, name='get_PZ'),
+    url(r'^Partner/getPS/$', views.getPS, name='get_PS'),
+    url(r'^Partner/getPCOUNTRY/$', views.getPCOUNTRY, name='get_PCOUNTRY'),
+    url(r'^Partner/getPP/$', views.getPP, name='get_PP'),
+    url(r'^Partner/getPF/$', views.getPF, name='get_PF'),
+    url(r'^Partner/getPE/$', views.getPE, name='get_PE'),
+    url(r'^Partner/getDBA/$', views.getDBA, name='get_DBA'),
+    url(r'^Partner/getDUN/$', views.getDUN, name='get_DUN'),
+    url(r'^Partner/getPPOC/$', views.getPPOC, name='get_PPOC'),
+    url(r'^Partner/getTIN/$', views.getTIN, name='get_TIN'),
+    url(r'^Partner/getTYPE/$', views.getTYPE, name='get_TYPE'),
 
 ]
