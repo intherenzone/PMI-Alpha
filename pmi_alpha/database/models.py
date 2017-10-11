@@ -46,7 +46,7 @@ class Vendor(models.Model):
 
 	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 	ZipCode = models.CharField(_("Zip Code"), max_length = 10, default = None)
-	TIN = models.IntegerField(default = None)
+	TIN = models.CharField(_("TIN"), max_length=11, default = None)
 	State = models.CharField(max_length = 10, default = None)
 	POC = models.CharField(_("Point of Contact"), max_length = 50, default = None)
 	Phone = models.CharField(_("phone"), max_length = 20, default = None)

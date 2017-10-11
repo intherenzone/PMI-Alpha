@@ -77,12 +77,109 @@ class VendorListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Vendor Records',       
-                    'LegalName',
-                    'POC'
-                ),
-              Submit('submit', 'Apply Filter'),
+        Fieldset(
+                    '<i class="fa fa-search"></i> Search Vendor Records'),       
+                    
+        HTML("""
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+            <div class="ui-widget">
+                {{filter.form.as_p}}
+                
+                <button type="submit">Apply Filter</button>
+            </div>
+
+            <script type="text/javascript">
+
+                $(function(){
+                  
+                    $("#id_LegalName").autocomplete({
+                        source: "getVLN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_ZipCode").autocomplete({
+                        source: "getZC/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_TIN").autocomplete({
+                        source: "getVTIN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_POC").autocomplete({
+                        source: "getVPOC/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Phone").autocomplete({
+                        source: "getPH/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Fax").autocomplete({
+                        source: "getF/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Email").autocomplete({
+                        source: "getE/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_DUNs").autocomplete({
+                        source: "getVDUN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_DBA").autocomplete({
+                        source: "getVDBA/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_Country").autocomplete({
+                        source: "getCOUN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                    $("#id_City").autocomplete({
+                        source: "getCITY/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                });
+
+                function AutoCompleteSelectHandler(event, ui)
+                {
+                    var selectedObj = ui.item;
+                }
+            </script>
+        """),
+    
     )
 
 class EmployeeListFormHelper(FormHelper):    

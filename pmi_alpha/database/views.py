@@ -370,6 +370,184 @@ def getTYPE(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
+#Vendor Model 
+
+def getVLN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    VLN = Vendor.objects.order_by('LegalName').filter(LegalName__istartswith=q)
+    results = []
+    for vln in VLN:
+        VLN_json = {}
+        VLN_json['value'] = vln.LegalName
+        if VLN_json not in results:
+            results.append(VLN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getZC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    ZC = Vendor.objects.order_by('ZipCode').filter(ZipCode__istartswith=q)
+    results = []
+    for zc in ZC:
+        ZC_json = {}
+        ZC_json['value'] = zc.ZipCode
+        if ZC_json not in results:
+            results.append(ZC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getVTIN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    VTIN = Vendor.objects.order_by('TIN').filter(TIN__istartswith=q)
+    results = []
+    for vtin in VTIN:
+        VTIN_json = {}
+        VTIN_json['value'] = vtin.TIN
+        if VTIN_json not in results:
+            results.append(VTIN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getVPOC(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    VPOC = Vendor.objects.order_by('POC').filter(POC__istartswith=q)
+    results = []
+    for vpoc in VPOC:
+        VPOC_json = {}
+        VPOC_json['value'] = vpoc.POC
+        if VPOC_json not in results:
+            results.append(VPOC_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getPH(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    PH = Vendor.objects.order_by('Phone').filter(Phone__istartswith=q)
+    results = []
+    for ph in PH:
+        PH_json = {}
+        PH_json['value'] = ph.Phone
+        if PH_json not in results:
+            results.append(PH_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getF(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    F = Vendor.objects.order_by('Fax').filter(Fax__istartswith=q)
+    results = []
+    for f in F:
+        F_json = {}
+        F_json['value'] = f.Fax
+        if F_json not in results:
+            results.append(F_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getE(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    E = Vendor.objects.order_by('Email').filter(Email__istartswith=q)
+    results = []
+    for e in E:
+        E_json = {}
+        E_json['value'] = e.Email
+        if E_json not in results:
+            results.append(E_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getVDUN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    VDUN = Vendor.objects.order_by('DUNs').filter(DUNs__istartswith=q)
+    results = []
+    for vdun in VDUN:
+        VDUN_json = {}
+        VDUN_json['value'] = vdun.DUNs
+        if VDUN_json not in results:
+            results.append(VDUN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getVDBA(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    VDBA = Vendor.objects.order_by('DBA').filter(DBA__istartswith=q)
+    results = []
+    for vdba in VDBA:
+        VDBA_json = {}
+        VDBA_json['value'] = vdba.DBA
+        if VDBA_json not in results:
+            results.append(VDBA_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getCOUN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    COUN = Vendor.objects.order_by('Country').filter(Country__istartswith=q)
+    results = []
+    for coun in COUN:
+        COUN_json = {}
+        COUN_json['value'] = coun.Country
+        if COUN_json not in results:
+            results.append(COUN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getCITY(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    CITY = Vendor.objects.order_by('City').filter(City__istartswith=q)
+    results = []
+    for city in CITY:
+        CITY_json = {}
+        CITY_json['value'] = city.City
+        if CITY_json not in results:
+            results.append(CITY_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
 #Detail Views -> Shows detailed Object Info from table.
 class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):
     permission_required = 'database.Vendor'

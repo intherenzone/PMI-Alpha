@@ -80,4 +80,20 @@ urlpatterns = [
     url(r'^Partner/getTIN/$', views.getTIN, name='get_TIN'),
     url(r'^Partner/getTYPE/$', views.getTYPE, name='get_TYPE'),
 
+    #AutoComplete for Vendor
+   # url(r'^Vendor/getVID/$', views.getIC, name='get_VID'),
+    url(r'^vendors/getVLN/$', views.getVLN, name='get_VLN'), 
+    url(r'^vendors/getZC/$', views.getZC, name='get_ZC'),
+    url(r'^vendors/getVTIN/$', views.getVTIN, name='get_VTIN'),
+    url(r'^vendors/getVPOC/$', views.getVPOC, name='get_VPOC'),
+    url(r'^vendors/getPH/$', views.getPH, name='get_PH'),
+    url(r'^vendors/getF/$', views.getF, name='get_F'),
+    url(r'^vendors/getE/$', views.getE, name='get_E'),
+    url(r'^vendors/getVDUN/$', views.getVDUN, name='get_VDUN'),
+    url(r'^vendors/getVDBA/$', views.getVDBA, name='get_VDBA'),
+    url(r'^vendors/getCOUN/$', views.getCOUN, name='get_COUN'),
+    url(r'^vendors/getCITY/$', views.getCITY, name='get_CITY'),
+
+
+
 ]

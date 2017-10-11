@@ -7,11 +7,22 @@ from django import forms
 
 
 class VendorListFilter(django_filters.FilterSet):
-
+  #VendorID = django_filters.CharFilter(lookup_expr='iexact')
+  LegalName = django_filters.CharFilter(lookup_expr='iexact')
+  ZipCode = django_filters.CharFilter(lookup_expr='iexact')
+  TIN = django_filters.NumberFilter(lookup_expr='iexact')
+  POC = django_filters.CharFilter(lookup_expr='iexact')
+  Phone = django_filters.CharFilter(lookup_expr='iexact')
+  Fax = django_filters.CharFilter(lookup_expr='iexact')
+  Email = django_filters.CharFilter(lookup_expr='iexact')
+  DUNs = django_filters.CharFilter(lookup_expr='iexact')
+  DBA = django_filters.CharFilter(lookup_expr='iexact')
+  Country = django_filters.CharFilter(lookup_expr='iexact')
+  City = django_filters.CharFilter(lookup_expr='iexact')
   class Meta:
     model = Vendor
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['LegalName','ZipCode','TIN','POC','Phone','Fax',
+              'Email','DUNs','DBA','Country', 'City']
 
 class EmployeeListFilter(django_filters.FilterSet):
 
