@@ -11,10 +11,17 @@ from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
+from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import json
 
+
+#edit Contract
+class ContractUpdate(UpdateView):
+    model = Contract
+    fields = ['CustomerID','IssuingCompany','ContractNumber','DocumentLocation','OrganizationType','POC','Status',
+              'Comments','EffectiveDate','EndDate','StartDate']
 
 #Contract model
 def getIC(request):
