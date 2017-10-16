@@ -19,6 +19,9 @@ urlpatterns = [
    url(r'^department/(?P<pk>[0-9]+)/$', views.Department_DetailView.as_view(), name='department_detail'),
    url(r'^poc/(?P<pk>[0-9]+)/$', views.POC_DetailView.as_view(), name='poc_detail'),
 
+   #Edit Records
+   url(r'^contract/(?P<pk>[0-9]+)/edit$', views.ContractUpdate.as_view(), name='edit contract'),
+
    #RENDERS ADD OBJECT PAGES USING MODELFORMS
    url(r'^add_vendor/$', views.add_vendor, name= 'add vendor'),
    url(r'^add_employee/$', views.add_employee, name= 'add employee'),
