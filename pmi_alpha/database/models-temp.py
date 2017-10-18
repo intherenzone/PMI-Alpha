@@ -166,6 +166,7 @@ class Department_Employee(models.Model):
 	CustomerID = models.ManyToManyField(Customer, through='Department',  on_delete=models.CASCADE)
 	EmployeeID = models.ManyToManyField(Employee, through='Customer_Employee',  on_delete=models.CASCADE)
 	VendorID = models.ManyToManyField(Vendor, through='Customer_Employee',  on_delete=models.CASCADE)
+
 class Contract_Employee(models.Model):
 	ContractID = models.ForeignKey(Contract,  on_delete=models.CASCADE)
 	CustomerID = models.ManyToManyField(Customer, through='Department',  on_delete=models.CASCADE)

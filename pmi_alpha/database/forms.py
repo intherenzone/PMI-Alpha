@@ -162,11 +162,28 @@ class CustomerListFormHelper(FormHelper):
     label_class = 'col-lg-3'
     layout = Layout(
          Fieldset(
-                    '<i class="fa fa-search"></i> Search Customer Records',       
-                    'LegalName',
+                    '<i class="fa fa-search"></i> Search Customer Records',
+                     'LegalName',
+                     'Vendors',
+                     'Employees',
+                     'Partners',
+                     'DBA',
+                     'Address',
+                     'City',
+                     'ZipCode',
+                     'State',
+                     'Country',
+                     'Phone',
+                     'Fax',
+                     'Email',
+                     'DUNs',
+                     'CAGE',
+                     'POC',
+                     'TIN',
                 ),
               Submit('submit', 'Apply Filter'),
     )
+    include_media = False
 
 class ContractListFormHelper(FormHelper):    
     form_method = 'GET'
@@ -265,131 +282,134 @@ class PartnerListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-        Fieldset('<i class="fa fa-search"></i> Search Partner Records'),
+                    Fieldset('<i class="fa fa-search"></i> Search Contract Records'),
                     
-        HTML("""
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
-            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-            <div class="ui-widget">
-                {{filter.form.as_p}}
-                <button type="submit">Apply Filter</button>
-            </div>
-            <script type="text/javascript">
-                $(function(){
-                    $("#id_LegalName").autocomplete({
-                        source: "getLN/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Address").autocomplete({
-                        source: "getPA/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_CAGE").autocomplete({
-                        source: "getCAG/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_City").autocomplete({
-                        source: "getPC/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_ZipCode").autocomplete({
-                        source: "getPZ/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_State").autocomplete({
-                        source: "getPS/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Country").autocomplete({
-                        source: "getPCOUNTRY/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Phone").autocomplete({
-                        source: "getPP/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Fax").autocomplete({
-                        source: "getPF/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Email").autocomplete({
-                        source: "getPE/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_DBA").autocomplete({
-                        source: "getDBA/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_DUNs").autocomplete({
-                        source: "getDUN/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_POC").autocomplete({
-                        source: "getPPOC/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_TIN").autocomplete({
-                        source: "getTIN/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                    $("#id_Type").autocomplete({
-                        source: "getTYPE/",
-                        select:function(event, ui){
-                            AutoCompleteSelectHandler(event, ui)
-                        },
-                        minLength: 1,
-                    });
-                });
+                    HTML("""
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+                        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+                        <div class="ui-widget">
+                            {{filter.form.as_p}}
+                            <p> Notice: When you input Date, please follow the format "dd/mm/yyyy". </p>
+                            <button type="submit">Apply Filter</button>
+                        </div>
         
-                function AutoCompleteSelectHandler(event, ui)
-                {
-                var selectedObj = ui.item;
-                }
-            </script>
-        """),
+                        <script type="text/javascript">
+        
+                            $(function(){
+                                $("#id_LegalName").autocomplete({
+                                    source: "getLN/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Address").autocomplete({
+                                    source: "getPA/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_CAGE").autocomplete({
+                                    source: "getCAGE/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_City").autocomplete({
+                                    source: "getPC/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_ZipCode").autocomplete({
+                                    source: "getPZ/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_State").autocomplete({
+                                    source: "getPS/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Country").autocomplete({
+                                    source: "getPCOUNTRY/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Phone").autocomplete({
+                                    source: "getPP/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Fax").autocomplete({
+                                    source: "getPF/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Email").autocomplete({
+                                    source: "getPE/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_DBA").autocomplete({
+                                    source: "getDBA/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_DUNs").autocomplete({
+                                    source: "getDUN/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_POC").autocomplete({
+                                    source: "getPPOC/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_TIN").autocomplete({
+                                    source: "getTIN/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                                $("#id_Type").autocomplete({
+                                    source: "getTYPE/",
+                                    select:function(event, ui){
+                                        AutoCompleteSelectHandler(event, ui)
+                                    },
+                                    minLength: 1,
+                                });
+                            });
+        
+                            function AutoCompleteSelectHandler(event, ui)
+                            {
+                                var selectedObj = ui.item;
+                            }
+                        </script>
+                    """),
     )
 
 
