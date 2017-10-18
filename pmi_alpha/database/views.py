@@ -15,6 +15,230 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import json
 
+#Customer model
+def getCLN(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        CLN = Customer.objects.order_by('LegalName').filter(LegalName__istartswith=q)
+        results = []
+        for cln in CLN:
+            CLN_json = {}
+            CLN_json['value']=cln.LegalName
+            if CLN_json not in results:
+                results.append(CLN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCDBA(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        CDBA = Customer.objects.order_by('DBA').filter(DBA__istartswith=q)
+        results = []
+        for cdba in CDBA:
+            CDBA_json = {}
+            CDBA_json['value']=cdba.DBA
+            if CDBA_json not in results:
+                results.append(CDBA_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCA(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CA = Customer.objects.order_by('Address').filter(Address__istartswith=q)
+        results = []
+        for ca in CA:
+            CA_json = {}
+            CA_json['value']=ca.Address
+            if CA_json not in results:
+                results.append(CA_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCC(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CC = Customer.objects.order_by('City').filter(City__istartswith=q)
+        results = []
+        for cc in CC:
+            CC_json = {}
+            CC_json['value']=cc.City
+            if CC_json not in results:
+                results.append(CC_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCZ(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CZ = Customer.objects.order_by('ZipCode').filter(ZipCode__istartswith=q)
+        results = []
+        for cz in CZ:
+            CZ_json = {}
+            CZ_json['value']=cz.ZipCode
+            if CZ_json not in results:
+                results.append(CZ_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCS(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CS = Customer.objects.order_by('State').filter(State__istartswith=q)
+        results = []
+        for cs in CS:
+            CS_json = {}
+            CS_json['value']=cs.State
+            if CS_json not in results:
+                results.append(CS_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCCOUNTRY(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CCOUNTRY = Customer.objects.order_by('Country').filter(Country__istartswith=q)
+        results = []
+        for ccountry in CCOUNTRY:
+            CCOUNTRY_json = {}
+            CCOUNTRY_json['value']=ccountry.Country
+            if CCOUNTRY_json not in results:
+                results.append(CCOUNTRY_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCP(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CP = Customer.objects.order_by('Phone').filter(Phone__istartswith=q)
+        results = []
+        for cp in CP:
+            CP_json = {}
+            CP_json['value']=cp.Phone
+            if CP_json not in results:
+                results.append(CP_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCF(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CF = Customer.objects.order_by('Fax').filter(Fax__istartswith=q)
+        results = []
+        for cf in CF:
+            CF_json = {}
+            CF_json['value']=cf.Fax
+            if CF_json not in results:
+                results.append(CF_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCE(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CE = Customer.objects.order_by('Email').filter(Email__istartswith=q)
+        results = []
+        for ce in CE:
+            CE_json = {}
+            CE_json['value']=ce.Email
+            if CE_json not in results:
+                results.append(CE_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCDUN(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CDUN = Customer.objects.order_by('DUNs').filter(DUNs__istartswith=q)
+        results = []
+        for cdun in CDUN:
+            CDUN_json = {}
+            CDUN_json['value']=cdun.DUNs
+            if CDUN_json not in results:
+                results.append(CDUN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCCAGE(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CCAGE = Customer.objects.order_by('CAGE').filter(CAGE__istartswith=q)
+        results = []
+        for ccage in CCAGE:
+            CCAGE_json = {}
+            CCAGE_json['value']=ccage.CAGE
+            if CCAGE_json not in results:
+                results.append(CCAGE_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCPOC(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CPOC = Customer.objects.order_by('POC').filter(POC__istartswith=q)
+        results = []
+        for cpoc in CPOC:
+            CPOC_json = {}
+            CPOC_json['value']=cpoc.POC
+            if CPOC_json not in results:
+                results.append(CPOC_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def getCTIN(request):
+    if request.is_ajax():
+        q = request.GET.get('term','')
+        CTIN = Customer.objects.order_by('TIN').filter(TIN__istartswith=q)
+        results = []
+        for ctin in CTIN:
+            CTIN_json = {}
+            CTIN_json['value']=ctin.TIN
+            if CTIN_json not in results:
+                results.append(CTIN_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
 
 #Contract model
 def getIC(request):
