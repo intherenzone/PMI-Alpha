@@ -4,8 +4,6 @@ from django.conf.urls import include
 from .models import *
 from django.contrib import admin
 
-
-
 urlpatterns = [
    url(r'^$', views.tables, name='tables'),
    url(r'^home/$', views.dashboard, name= 'home'),
@@ -54,6 +52,41 @@ urlpatterns = [
     url(r'^departments/$', views.DepartmentListView.as_view(), name="department table"),
     url(r'^POCs/$', views.POCListView.as_view(), name="poc table"),
 
+    #Autocomplete for Customers
+    url(r'^Customers/LegalName-autocomplete/$', views.LegalName_autocomplete.as_view(),
+        name='LegalName-autocomplete', ),
+    url(r'^Customers/Vendors-autocomplete/$', views.Vendors_autocomplete.as_view(),
+        name='Vendors-autocomplete', ),
+    url(r'^Customers/Employees-autocomplete/$', views.Employees_autocomplete.as_view(),
+        name='Employees-autocomplete', ),
+    url(r'^Customers/Partners-autocomplete/$', views.Partners_autocomplete.as_view(),
+        name='Partners-autocomplete', ),
+    url(r'^Customers/DBA-autocomplete/$', views.DBA_autocomplete.as_view(),
+        name='DBA-autocomplete', ),
+    url(r'^Customers/Address-autocomplete/$', views.Address_autocomplete.as_view(),
+        name='Address-autocomplete', ),
+    url(r'^Customers/City-autocomplete/$', views.City_autocomplete.as_view(),
+        name='City-autocomplete', ),
+    url(r'^Customers/ZipCode-autocomplete/$', views.ZipCode_autocomplete.as_view(),
+        name='ZipCode-autocomplete', ),
+    url(r'^Customers/State-autocomplete/$', views.State_autocomplete.as_view(),
+        name='State-autocomplete', ),
+    url(r'^Customers/Country-autocomplete/$', views.Country_autocomplete.as_view(),
+        name='Country-autocomplete', ),
+    url(r'^Customers/Phone-autocomplete/$', views.Phone_autocomplete.as_view(),
+        name='Phone-autocomplete', ),
+    url(r'^Customers/Fax-autocomplete/$', views.Fax_autocomplete.as_view(),
+        name='Fax-autocomplete', ),
+    url(r'^Customers/Email-autocomplete/$', views.Email_autocomplete.as_view(),
+        name='Email-autocomplete', ),
+    url(r'^Customers/DUNs-autocomplete/$', views.DUNs_autocomplete.as_view(),
+        name='DUNs-autocomplete', ),
+    url(r'^Customers/CAGE-autocomplete/$', views.CAGE_autocomplete.as_view(),
+        name='CAGE-autocomplete', ),
+    url(r'^Customers/POC-autocomplete/$', views.POC_autocomplete.as_view(),
+        name='POC-autocomplete', ),
+    url(r'^Customers/TIN-autocomplete/$', views.TIN_autocomplete.as_view(),
+        name='TIN-autocomplete', ),
     #AutoComplete for Contract
     url(r'^Contracts/getIC/$', views.getIC, name='get_IC'),
     url(r'^Contracts/getCN/$', views.getCN, name='get_CN'),
@@ -75,21 +108,21 @@ urlpatterns = [
     url(r'^GoogleGroups/getAD/$', views.getAD, name='get_AD'),
                
     #AutoComplete for Partner
-    url(r'^Partners/getLN/$', views.getLN, name='get_LN'),
-    url(r'^Partners/getPA/$', views.getPA, name='get_PA'),
-    url(r'^Partners/getCAG/$', views.getCAG, name='get_CAG'),
-    url(r'^Partners/getPC/$', views.getPC, name='get_PC'),
-    url(r'^Partners/getPZ/$', views.getPZ, name='get_PZ'),
-    url(r'^Partners/getPS/$', views.getPS, name='get_PS'),
-    url(r'^Partners/getPCOUNTRY/$', views.getPCOUNTRY, name='get_PCOUNTRY'),
-    url(r'^Partners/getPP/$', views.getPP, name='get_PP'),
-    url(r'^Partners/getPF/$', views.getPF, name='get_PF'),
-    url(r'^Partners/getPE/$', views.getPE, name='get_PE'),
-    url(r'^Partners/getDBA/$', views.getDBA, name='get_DBA'),
-    url(r'^Partners/getDUN/$', views.getDUN, name='get_DUN'),
-    url(r'^Partners/getPPOC/$', views.getPPOC, name='get_PPOC'),
-    url(r'^Partners/getTIN/$', views.getTIN, name='get_TIN'),
-    url(r'^Partners/getTYPE/$', views.getTYPE, name='get_TYPE'),
+    url(r'^Partner/getLN/$', views.getLN, name='get_LN'),
+    url(r'^Partner/getPA/$', views.getPA, name='get_PA'),
+    url(r'^Partner/getCAGE/$', views.getCAGE, name='get_CAGE'),
+    url(r'^Partner/getPC/$', views.getPC, name='get_PC'),
+    url(r'^Partner/getPZ/$', views.getPZ, name='get_PZ'),
+    url(r'^Partner/getPS/$', views.getPS, name='get_PS'),
+    url(r'^Partner/getPCOUNTRY/$', views.getPCOUNTRY, name='get_PCOUNTRY'),
+    url(r'^Partner/getPP/$', views.getPP, name='get_PP'),
+    url(r'^Partner/getPF/$', views.getPF, name='get_PF'),
+    url(r'^Partner/getPE/$', views.getPE, name='get_PE'),
+    url(r'^Partner/getDBA/$', views.getDBA, name='get_DBA'),
+    url(r'^Partner/getDUN/$', views.getDUN, name='get_DUN'),
+    url(r'^Partner/getPPOC/$', views.getPPOC, name='get_PPOC'),
+    url(r'^Partner/getTIN/$', views.getTIN, name='get_TIN'),
+    url(r'^Partner/getTYPE/$', views.getTYPE, name='get_TYPE'),
 
 
 

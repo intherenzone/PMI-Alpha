@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'database',
     'images',
     'watson',               #Basic Search
-   # 'dal',
-   # 'dal_select2',
+    'dal',                  # Autocomplete
+    'dal_select2',          # Autocomplete
 ]
 
 MIDDLEWARE = [

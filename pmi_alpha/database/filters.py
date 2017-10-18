@@ -4,7 +4,7 @@
 import django_filters
 from .models import *
 from django import forms
-
+from dal import autocomplete
 
 class VendorListFilter(django_filters.FilterSet):
 
@@ -33,11 +33,47 @@ class GGListFilter(django_filters.FilterSet):
     #order_by = ['pk']
 
 class CustomerListFilter(django_filters.FilterSet):
+    LegalName = django_filters.ModelChoiceFilter(name='LegalName',queryset=Customer.objects.all(),
+                                                 widget=autocomplete.ModelSelect2(url='LegalName-autocomplete'),
+                                                 to_field_name='LegalName')
 
-  class Meta:
-    model = Customer
-    fields =  '__all__'
-    order_by = ['pk']
+    Vendors = django_filters.ModelChoiceFilter(name='Vendors__LegalName', queryset=Customer.objects.all(),
+                                               widget=autocomplete.ModelSelect2(url='Vendors-autocomplete'))
+    Employees = django_filters.ModelChoiceFilter(name='Employees__LName', queryset=Customer.objects.all(),
+                                                 widget=autocomplete.ModelSelect2(url='Employees-autocomplete'))
+    Partners = django_filters.ModelChoiceFilter(name='Partners__LegalName', queryset=Customer.objects.all(),
+                                                widget=autocomplete.ModelSelect2(url='Partners-autocomplete'))
+
+    DBA = django_filters.Filter(name="DBA",
+                                            widget=autocomplete.Select2(url='DBA-autocomplete'),)
+    Address = django_filters.CharFilter(name="Address",
+                                               widget=autocomplete.Select2(url='Address-autocomplete'))
+    City = django_filters.CharFilter(name="City",
+                                            widget=autocomplete.Select2(url='City-autocomplete'))
+    ZipCode = django_filters.CharFilter(name="ZipCode",
+                                               widget=autocomplete.Select2(url='ZipCode-autocomplete'))
+    State = django_filters.CharFilter(name="State",
+                                             widget=autocomplete.Select2(url='State-autocomplete'))
+    Country = django_filters.CharFilter(name="Country",
+                                               widget=autocomplete.Select2(url='Country-autocomplete'))
+    Phone = django_filters.CharFilter(name="Phone",
+                                             widget=autocomplete.Select2(url='Phone-autocomplete'))
+    Fax = django_filters.CharFilter(name="Fax",
+                                           widget=autocomplete.Select2(url='Fax-autocomplete'))
+    Email = django_filters.CharFilter(name="Email",
+                                             widget=autocomplete.Select2(url='Email-autocomplete'))
+    DUNs = django_filters.CharFilter(name="DUNs",
+                                            widget=autocomplete.Select2(url='DUNs-autocomplete'))
+    CAGE = django_filters.CharFilter(name="CAGE",
+                                            widget=autocomplete.Select2(url='CAGE-autocomplete'))
+    POC = django_filters.CharFilter(name="POC",
+                                           widget=autocomplete.Select2(url='POC-autocomplete'))
+    TIN = django_filters.CharFilter(name="TIN",
+                                           widget=autocomplete.Select2(url='TIN-autocomplete'))
+    class Meta:
+        model = Customer
+        fields =  '__all__'
+        order_by = ['pk']
 
 class ContractListFilter(django_filters.FilterSet):
   IssuingCompany = django_filters.CharFilter(lookup_expr='iexact')
@@ -60,7 +96,6 @@ class ContractListFilter(django_filters.FilterSet):
 class PartnerListFilter(django_filters.FilterSet):
     LegalName = django_filters.CharFilter(lookup_expr='iexact')
     Address = django_filters.CharFilter(lookup_expr='iexact')
-    CAGE = django_filters.CharFilter(lookup_expr='iexact')
     City = django_filters.CharFilter(lookup_expr='iexact')
     ZipCode = django_filters.CharFilter(lookup_expr='iexact')
     State = django_filters.CharFilter(lookup_expr='iexact')
@@ -75,7 +110,7 @@ class PartnerListFilter(django_filters.FilterSet):
     Type = django_filters.CharFilter(lookup_expr='iexact')
     class Meta:
         model = Partner
-        fields = ['LegalName', 'Address', 'CAGE', 'City', 'ZipCode', 'State', 'Country', 'Phone', 'Fax', 'Email', 'DBA', 'DUNs', 'POC', 'TIN', 'Type']
+        fields = ['LegalName', 'Address', 'City', 'ZipCode', 'State', 'Country', 'Phone','Fax', 'Email', 'DBA', 'DUNs','POC','TIN','Type']
 
 class DepartmentListFilter(django_filters.FilterSet):
 

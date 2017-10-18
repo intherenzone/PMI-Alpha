@@ -15,6 +15,214 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import json
 
+# Autocomplete for Customer model
+from dal import autocomplete
+class LegalName_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName')
+        if self.q:
+            qs = qs.filter(LegalName__istartswith=self.q)
+        return qs
+
+class Vendors_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Vendor.objects.order_by('LegalName')
+        if self.q:
+            qs = qs.filter(LegalName__icontains=self.q)
+        return qs
+
+class Employees_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Employee.objects.order_by('LName').distinct()
+        if self.q:
+            qs = qs.filter(LName__icontains=self.q)
+        return qs
+
+class Partners_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Partner.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(LegalName__icontains=self.q)
+        return qs
+
+class DBA_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(DBA__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.DBA
+
+    def get_result_value(self, item):
+        return item.DBA
+
+class Address_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(Address__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.Address
+
+    def get_result_value(self, item):
+        return item.Address
+
+class City_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(City__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.City
+
+    def get_result_value(self, item):
+        return item.City
+
+class ZipCode_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(ZipCode__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.ZipCode
+
+    def get_result_value(self, item):
+        return item.ZipCode
+
+class State_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(State__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.State
+
+    def get_result_value(self, item):
+        return item.State
+
+class Country_autocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(Country__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.Country
+
+    def get_result_value(self, item):
+        return item.Country
+
+class Phone_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(Phone__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.Phone
+
+    def get_result_value(self, item):
+        return item.Phone
+
+class Fax_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+
+        if self.q:
+            qs = qs.filter(Fax__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.Fax
+
+    def get_result_value(self, item):
+        return item.Fax
+
+class Email_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+
+        if self.q:
+            qs = qs.filter(Email__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.Email
+
+    def get_result_value(self, item):
+        return item.Email
+
+class DUNs_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+
+        if self.q:
+            qs = qs.filter(DUNs__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.DUNs
+
+    def get_result_value(self, item):
+        return item.DUNs
+
+class CAGE_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(CAGE__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.CAGE
+
+    def get_result_value(self, item):
+        return item.CAGE
+
+class POC_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(POC__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.POC
+
+    def get_result_value(self, item):
+        return item.POC
+
+class TIN_autocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Customer.objects.order_by('LegalName').distinct()
+        if self.q:
+            qs = qs.filter(TIN__icontains=self.q)
+        return qs
+
+    def get_result_label(self, item):
+        return item.TIN
+
+    def get_result_value(self, item):
+        return item.TIN
 
 #Contract model
 def getIC(request):
@@ -247,8 +455,8 @@ def getAD(request):
 #Partner model
 def getLN(request):
     if request.is_ajax():
-        q = request.GET.get('term', '')
-        LN = Partner.objects.order_by('LegalName').filter(LegalName__istartswith=q)
+        q = request.GET.get('tern','')
+        LN = Partner.objects.order_by('LegalName').filter(LegalName_istartswith=q)
         results = []
         for ln in LN:
             LN_json = {}
@@ -263,12 +471,12 @@ def getLN(request):
 
 def getPA(request):
     if request.is_ajax():
-        q = request.GET.get('term', '')
-        PA = Partner.objects.order_by('Address').filter(Address__istartswith=q)
+        q = request.GET.get('tern','')
+        PA = Partner.objects.order_by('Address').filter(Address_istartswith=q)
         results = []
         for pa in PA:
             PA_json = {}
-            PA_json['value']=pa.Address
+            PA_json['value']=pa.PA
             if PA_json not in results:
                 results.append(PA_json)
         data = json.dumps(results)
@@ -277,16 +485,16 @@ def getPA(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
-def getCAG(request):
+def getCAGE(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        CAG = Partner.objects.order_by('CAGE').filter(CAGE__istartswith=q)
+        q = request.GET.get('tern','')
+        CAGE = Partner.objects.order_by('CAGE').filter(CAGE_istartswith=q)
         results = []
-        for cag in CAG:
-            CAG_json = {}
-            CAG_json['value']=cag.CAGE
-            if CAG_json not in results:
-                results.append(CAG_json)
+        for cage in CAGE:
+            CAGE_json = {}
+            CAGE_json['value']=cage.CAGE
+            if CAGE_json not in results:
+                results.append(CAGE_json)
         data = json.dumps(results)
     else:
         data = 'fail'
@@ -295,8 +503,8 @@ def getCAG(request):
 
 def getPC(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PC = Partner.objects.order_by('City').filter(City__istartswith=q)
+        q = request.GET.get('tern','')
+        PC = Partner.objects.order_by('City').filter(City_istartswith=q)
         results = []
         for pc in PC:
             PC_json = {}
@@ -311,8 +519,8 @@ def getPC(request):
 
 def getPZ(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PZ = Partner.objects.order_by('ZipCode').filter(ZipCode__istartswith=q)
+        q = request.GET.get('tern','')
+        PZ = Partner.objects.order_by('ZipCode').filter(ZipCode_istartswith=q)
         results = []
         for pz in PZ:
             PZ_json = {}
@@ -327,8 +535,8 @@ def getPZ(request):
 
 def getPS(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PS = Partner.objects.order_by('State').filter(State__istartswith=q)
+        q = request.GET.get('tern','')
+        PS = Partner.objects.order_by('State').filter(State_istartswith=q)
         results = []
         for ps in PS:
             PS_json = {}
@@ -343,8 +551,8 @@ def getPS(request):
 
 def getPCOUNTRY(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PCOUNTRY = Partner.objects.order_by('Country').filter(Country__istartswith=q)
+        q = request.GET.get('tern','')
+        PCOUNTRY = Partner.objects.order_by('Country').filter(Country_istartswith=q)
         results = []
         for pcountry in PCOUNTRY:
             PCOUNTRY_json = {}
@@ -359,8 +567,8 @@ def getPCOUNTRY(request):
 
 def getPP(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PP = Partner.objects.order_by('Phone').filter(Phone__istartswith=q)
+        q = request.GET.get('tern','')
+        PP = Partner.objects.order_by('Phone').filter(Phone_istartswith=q)
         results = []
         for pp in PP:
             PP_json = {}
@@ -375,8 +583,8 @@ def getPP(request):
 
 def getPF(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PF = Partner.objects.order_by('Fax').filter(Fax__istartswith=q)
+        q = request.GET.get('tern','')
+        PF = Partner.objects.order_by('Fax').filter(Fax_istartswith=q)
         results = []
         for pf in PF:
             PF_json = {}
@@ -391,8 +599,8 @@ def getPF(request):
 
 def getPE(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PE = Partner.objects.order_by('Email').filter(Email__istartswith=q)
+        q = request.GET.get('tern','')
+        PE = Partner.objects.order_by('Email').filter(Email_istartswith=q)
         results = []
         for pe in PE:
             PE_json = {}
@@ -407,8 +615,8 @@ def getPE(request):
 
 def getDBA(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        DBA = Partner.objects.order_by('DBA').filter(DBA__istartswith=q)
+        q = request.GET.get('tern','')
+        DBA = Partner.objects.order_by('DBA').filter(DBA_istartswith=q)
         results = []
         for dba in DBA:
             DBA_json = {}
@@ -423,8 +631,8 @@ def getDBA(request):
 
 def getDUN(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        DUN = Partner.objects.order_by('DUNs').filter(DUNs__istartswith=q)
+        q = request.GET.get('tern','')
+        DUN = Partner.objects.order_by('DUNs').filter(DUNs_istartswith=q)
         results = []
         for dun in DUN:
             DUN_json = {}
@@ -439,8 +647,8 @@ def getDUN(request):
 
 def getPPOC(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        PPOC = Partner.objects.order_by('POC').filter(POC__istartswith=q)
+        q = request.GET.get('tern','')
+        PPOC = Partner.objects.order_by('POC').filter(POC_istartswith=q)
         results = []
         for ppoc in PPOC:
             PPOC_json = {}
@@ -455,8 +663,8 @@ def getPPOC(request):
 
 def getTIN(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        TIN = Partner.objects.order_by('TIN').filter(TIN__istartswith=q)
+        q = request.GET.get('tern','')
+        TIN = Partner.objects.order_by('TIN').filter(TIN_istartswith=q)
         results = []
         for tin in TIN:
             TIN_json = {}
@@ -471,8 +679,8 @@ def getTIN(request):
 
 def getTYPE(request):
     if request.is_ajax():
-        q = request.GET.get('term','')
-        TYPE = Partner.objects.order_by('Type').filter(Type__istartswith=q)
+        q = request.GET.get('tern','')
+        TYPE = Partner.objects.order_by('Type').filter(Type_istartswith=q)
         results = []
         for type in TYPE:
             TYPE_json = {}

@@ -210,7 +210,7 @@ class Customer(models.Model):
 
 	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 
-	Vendors = models.ManyToManyField(Vendor, through='Customer_Vendor')
+	Vendors = models.ManyToManyField(Vendor, through='Customer_Vendor', verbose_name='Vendor')
 	Employees = models.ManyToManyField(Employee, through='Customer_Employee')
 	Partners = models.ManyToManyField(Partner, through='Customer_Partner')
 
