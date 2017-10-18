@@ -22,12 +22,15 @@ class EmployeeListFilter(django_filters.FilterSet):
     date_between = django_filters.DateFromToRangeFilter(name='DateOfHire',
                                                              label='Date of Hire (Between)')
     order_by = ['pk']
-class GGListFilter(django_filters.FilterSet):
 
+class GGListFilter(django_filters.FilterSet):
+  Name = django_filters.CharFilter(lookup_expr='iexact')
+  Admin = django_filters.CharFilter(lookup_expr='iexact')
   class Meta:
     model = GoogleGroup
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['Name','Admin']
+    #fields =  '__all__'
+    #order_by = ['pk']
 
 class CustomerListFilter(django_filters.FilterSet):
 
@@ -57,6 +60,7 @@ class ContractListFilter(django_filters.FilterSet):
 class PartnerListFilter(django_filters.FilterSet):
     LegalName = django_filters.CharFilter(lookup_expr='iexact')
     Address = django_filters.CharFilter(lookup_expr='iexact')
+    CAGE = django_filters.CharFilter(lookup_expr='iexact')
     City = django_filters.CharFilter(lookup_expr='iexact')
     ZipCode = django_filters.CharFilter(lookup_expr='iexact')
     State = django_filters.CharFilter(lookup_expr='iexact')
@@ -71,7 +75,7 @@ class PartnerListFilter(django_filters.FilterSet):
     Type = django_filters.CharFilter(lookup_expr='iexact')
     class Meta:
         model = Partner
-        fields = ['LegalName', 'Address', 'City', 'ZipCode', 'State', 'Country', 'Phone','Fax', 'Email', 'DBA', 'DUNs','POC','TIN','Type']
+        fields = ['LegalName', 'Address', 'CAGE', 'City', 'ZipCode', 'State', 'Country', 'Phone', 'Fax', 'Email', 'DBA', 'DUNs', 'POC', 'TIN', 'Type']
 
 class DepartmentListFilter(django_filters.FilterSet):
 
@@ -81,8 +85,13 @@ class DepartmentListFilter(django_filters.FilterSet):
     order_by = ['pk']
 
 class POCListFilter(django_filters.FilterSet):
-
+  FName = django_filters.CharFilter(lookup_expr='iexact')
+  LName = django_filters.CharFilter(lookup_expr='iexact')
+  Address = django_filters.CharFilter(lookup_expr='iexact')
+  Phone = django_filters.CharFilter(lookup_expr='iexact')
+  Email = django_filters.CharFilter(lookup_expr='iexact')
   class Meta:
     model = POC
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['PartnerID','ContractID','CustomerID','FName','LName','Address','Phone','Email']
+    #fields =  '__all__'
+    #order_by = ['pk']

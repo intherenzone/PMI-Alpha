@@ -62,22 +62,35 @@ urlpatterns = [
     url(r'^Contracts/getPOC/$', views.getPOC, name='get_POC'),
     url(r'^Contracts/getS/$', views.getS, name='get_S'),
     url(r'^Contracts/getC/$', views.getC, name='get_C'),
+
+    #AutoComplete for POC
+    url(r'^POCs/getFN/$', views.getFN, name='get_FN'),
+    url(r'^POCs/getLN/$', views.getLN, name='get_LN'),
+    url(r'^POCs/getA/$', views.getA, name='get_A'),
+    url(r'^POCs/getP/$', views.getP, name='get_P'),
+    url(r'^POCs/getE/$', views.getE, name='get_E'),
+
+    # AutoComplete for GG
+    url(r'^GoogleGroups/getN/$', views.getN, name='get_N'),
+    url(r'^GoogleGroups/getAD/$', views.getAD, name='get_AD'),
                
     #AutoComplete for Partner
-    url(r'^Partner/getLN/$', views.getLN, name='get_LN'),
-    url(r'^Partner/getPA/$', views.getPA, name='get_PA'),
-    url(r'^Partner/getCAGE/$', views.getCAGE, name='get_CAGE'),
-    url(r'^Partner/getPC/$', views.getPC, name='get_PC'),
-    url(r'^Partner/getPZ/$', views.getPZ, name='get_PZ'),
-    url(r'^Partner/getPS/$', views.getPS, name='get_PS'),
-    url(r'^Partner/getPCOUNTRY/$', views.getPCOUNTRY, name='get_PCOUNTRY'),
-    url(r'^Partner/getPP/$', views.getPP, name='get_PP'),
-    url(r'^Partner/getPF/$', views.getPF, name='get_PF'),
-    url(r'^Partner/getPE/$', views.getPE, name='get_PE'),
-    url(r'^Partner/getDBA/$', views.getDBA, name='get_DBA'),
-    url(r'^Partner/getDUN/$', views.getDUN, name='get_DUN'),
-    url(r'^Partner/getPPOC/$', views.getPPOC, name='get_PPOC'),
-    url(r'^Partner/getTIN/$', views.getTIN, name='get_TIN'),
-    url(r'^Partner/getTYPE/$', views.getTYPE, name='get_TYPE'),
+    url(r'^Partners/getLN/$', views.getLN, name='get_LN'),
+    url(r'^Partners/getPA/$', views.getPA, name='get_PA'),
+    url(r'^Partners/getCAG/$', views.getCAG, name='get_CAG'),
+    url(r'^Partners/getPC/$', views.getPC, name='get_PC'),
+    url(r'^Partners/getPZ/$', views.getPZ, name='get_PZ'),
+    url(r'^Partners/getPS/$', views.getPS, name='get_PS'),
+    url(r'^Partners/getPCOUNTRY/$', views.getPCOUNTRY, name='get_PCOUNTRY'),
+    url(r'^Partners/getPP/$', views.getPP, name='get_PP'),
+    url(r'^Partners/getPF/$', views.getPF, name='get_PF'),
+    url(r'^Partners/getPE/$', views.getPE, name='get_PE'),
+    url(r'^Partners/getDBA/$', views.getDBA, name='get_DBA'),
+    url(r'^Partners/getDUN/$', views.getDUN, name='get_DUN'),
+    url(r'^Partners/getPPOC/$', views.getPPOC, name='get_PPOC'),
+    url(r'^Partners/getTIN/$', views.getTIN, name='get_TIN'),
+    url(r'^Partners/getTYPE/$', views.getTYPE, name='get_TYPE'),
+
+
 
 ]
