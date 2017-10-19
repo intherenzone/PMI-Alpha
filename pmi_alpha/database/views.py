@@ -11,10 +11,21 @@ from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
+from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import json
 
+#Edit POC
+class POCUpdate(UpdateView):
+  model = POC
+  fields = ['FName','LName','PartnerID','ContractID','CustomerID','Address',
+           'Phone','Email']
+
+#Edit GG
+class GoogleGroupUpdate(UpdateView):
+  model = POC
+  fields = ['Employees','Name','Admin']
 
 #Contract model
 def getIC(request):
