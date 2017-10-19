@@ -11,9 +11,16 @@ from watson import search as watson
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
+from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import json
+
+#Customer edit
+class CustomerUpdate(UpdateView):
+    model = Customer
+    fields = ['LegalName','DBA','Address','City','ZipCode','State','Country',
+              'Phone','Fax','Email','DUNs','CAGE','POC','TIN']
 
 #Customer model
 def getCLN(request):

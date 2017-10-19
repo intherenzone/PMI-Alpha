@@ -107,6 +107,8 @@ urlpatterns = [
     url(r'^Customers/getCPOC/$', views.getCPOC, name='get_CPOC'),
     url(r'^Customers/getCTIN/$', views.getCTIN, name='get_CTIN'),
 
+    #Edit Customer
+    url(r'^customer/(?P<pk>[0-9]+)/edit$', views.CustomerUpdate.as_view(), name='edit customer'),
 
 
 
