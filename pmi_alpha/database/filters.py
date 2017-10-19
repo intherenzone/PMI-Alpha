@@ -60,6 +60,7 @@ class ContractListFilter(django_filters.FilterSet):
 class PartnerListFilter(django_filters.FilterSet):
     LegalName = django_filters.CharFilter(lookup_expr='iexact')
     Address = django_filters.CharFilter(lookup_expr='iexact')
+    CAGE = django_filters.CharFilter(lookup_expr='iexact')
     City = django_filters.CharFilter(lookup_expr='iexact')
     ZipCode = django_filters.CharFilter(lookup_expr='iexact')
     State = django_filters.CharFilter(lookup_expr='iexact')
@@ -74,7 +75,7 @@ class PartnerListFilter(django_filters.FilterSet):
     Type = django_filters.CharFilter(lookup_expr='iexact')
     class Meta:
         model = Partner
-        fields = ['LegalName', 'Address', 'City', 'ZipCode', 'State', 'Country', 'Phone','Fax', 'Email', 'DBA', 'DUNs','POC','TIN','Type']
+        fields = ['LegalName', 'Address', 'CAGE', 'City', 'ZipCode', 'State', 'Country', 'Phone', 'Fax', 'Email', 'DBA', 'DUNs', 'POC', 'TIN', 'Type']
 
 class DepartmentListFilter(django_filters.FilterSet):
 
