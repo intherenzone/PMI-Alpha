@@ -91,6 +91,25 @@ urlpatterns = [
     url(r'^Partners/getTIN/$', views.getTIN, name='get_TIN'),
     url(r'^Partners/getTYPE/$', views.getTYPE, name='get_TYPE'),
 
+    #AutoComplete for customer
+    url(r'^Customers/getCLN/$', views.getCLN, name='get_CLN'),
+    url(r'^Customers/getCDBA/$', views.getCDBA, name='get_CDBA'),
+    url(r'^Customers/getCA/$', views.getCA, name='get_CA'),
+    url(r'^Customers/getCC/$', views.getCC, name='get_CC'),
+    url(r'^Customers/getCZ/$', views.getCZ, name='get_CZ'),
+    url(r'^Customers/getCS/$', views.getCS, name='get_CS'),
+    url(r'^Customers/getCCOUNTRY/$', views.getCCOUNTRY, name='get_CCOUNTRY'),
+    url(r'^Customers/getCP/$', views.getCP, name='get_CP'),
+    url(r'^Customers/getCF/$', views.getCF, name='get_CF'),
+    url(r'^Customers/getCE/$', views.getCE, name='get_CE'),
+    url(r'^Customers/getCDUN/$', views.getCDUN, name='get_CDUN'),
+    url(r'^Customers/getCCAGE/$', views.getCCAGE, name='get_CCAGE'),
+    url(r'^Customers/getCPOC/$', views.getCPOC, name='get_CPOC'),
+    url(r'^Customers/getCTIN/$', views.getCTIN, name='get_CTIN'),
+
+    #Edit Customer
+    url(r'^customer/(?P<pk>[0-9]+)/edit$', views.CustomerUpdate.as_view(), name='edit customer'),
+
 
 
 ]

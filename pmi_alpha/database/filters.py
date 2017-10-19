@@ -33,11 +33,25 @@ class GGListFilter(django_filters.FilterSet):
     #order_by = ['pk']
 
 class CustomerListFilter(django_filters.FilterSet):
-
-  class Meta:
+ LegalName = django_filters.CharFilter(lookup_expr='iexact')
+ DBA = django_filters.CharFilter(lookup_expr='iexact')
+ Address = django_filters.CharFilter(lookup_expr='iexact')
+ City = django_filters.CharFilter(lookup_expr='iexact')
+ ZipCode = django_filters.CharFilter(lookup_expr='iexact')
+ State = django_filters.CharFilter(lookup_expr='iexact')
+ Country = django_filters.CharFilter(lookup_expr='iexact')
+ Phone = django_filters.CharFilter(lookup_expr='iexact')
+ Fax = django_filters.CharFilter(lookup_expr='iexact')
+ Email = django_filters.CharFilter(lookup_expr='iexact')
+ DUNs = django_filters.CharFilter(lookup_expr='iexact')
+ CAGE = django_filters.CharFilter(lookup_expr='iexact')
+ POC = django_filters.CharFilter(lookup_expr='iexact')
+ TIN = django_filters.CharFilter(lookup_expr='iexact')
+ class Meta:
     model = Customer
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['LegalName','DBA','Address','City','ZipCode','State','Country','Phone','Fax','Email','DUNs','CAGE','POC','TIN']
+    #fields =  '__all__'
+    #order_by = ['pk']
 
 class ContractListFilter(django_filters.FilterSet):
   IssuingCompany = django_filters.CharFilter(lookup_expr='iexact')
